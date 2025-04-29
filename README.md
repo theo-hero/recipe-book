@@ -1,26 +1,7 @@
 # Recipe Book
 
 Простое fullstack-приложение "Recipe Book" с фронтендом на **Angular**, бэкендом на **Spring Boot** и базой данных **PostgreSQL**.  
-Проект полностью готов для локального запуска через **Docker Compose**.
-
-## Структура проекта
-
-```
-recipe-book/
-├── front/              # Фронтенд (Angular)
-│   └── Dockerfile      # Dockerfile для фронта
-│
-├── back/               # Бэкенд (Spring Boot)
-│   └── Dockerfile      # Dockerfile для бэка
-│
-├── init.sql            # SQL-скрипт инициализации базы данных
-├── docker-compose.yml  # Конфигурация Docker Compose
-└── README.md           # Описание проекта
-```
-
-## Требования
-
-- Установленные [Docker](https://www.docker.com/) и [Docker Compose](https://docs.docker.com/compose/).
+Для запуска необходимо, чтобы на устройстве были установлены [Docker](https://www.docker.com/) и [Docker Compose](https://docs.docker.com/compose/).
 
 ## Как запустить проект
 
@@ -73,12 +54,8 @@ docker-compose down -v
 docker-compose up --build
 ```
 
----
-
 ## Примечания
 
 - База данных автоматически инициализируется скриптом `init.sql`.
 - Фронтенд использует nginx для проксирования запросов к API.
 - Проект предназначен для локальной разработки и тестирования.
-
----
