@@ -1,0 +1,113 @@
+<button class="close-window" (click)="closeTheWindow($event)">X</button>
+<form #recipeForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+  <div class="form-group">
+    <label for="title">Название</label>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      [(ngModel)]="recipe.title"
+      required
+      class="form-control"
+      #title="ngModel" />
+    <div *ngIf="title.invalid && (title.dirty || title.touched)" class="invalid-feedback">
+      Поле "Название" обязательно.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Описание</label>
+    <textarea
+      id="description"
+      name="description"
+      [(ngModel)]="recipe.description"
+      rows="3"
+      placeholder="Одно-два предложения"
+      class="form-control"
+      #description="ngModel"
+      required></textarea>
+    <div *ngIf="description.invalid && (description.dirty || description.touched)" class="invalid-feedback">
+      Поле "Описание" обязательно.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="instruction">Инструкции по приготовлению</label>
+    <textarea
+      id="instruction"
+      name="instruction"
+      [(ngModel)]="recipe.instruction"
+      rows="5"
+      placeholder="Опишите рецепт пошагово"
+      class="form-control"
+      #instruction="ngModel"
+      required></textarea>
+    <div *ngIf="instruction.invalid && (instruction.dirty || instruction.touched)" class="invalid-feedback">
+      Поле "Инструкции" обязательно.
+    </div>
+  </div>
+
+  <div *ngFor="let ingredient of recipe.ingredients; let i = index" class="ingredient-row">
+    <div class="form-group row">
+      <div class="input-ingredient">
+        <select
+          id="ingredient-name-{{i}}"
+          [(ngModel)]="ingredient.name"
+          class="form-control"
+          name="ingredientName{{i}}"
+          #ingredientName="ngModel"
+          required>
+          <option value="">Выберите ингредиент</option>
+          <option *ngFor="let item of ingredientOptions">{{item}}</option>
+          <option value="custom">Другой...</option>
+        </select>
+        <input
+          *ngIf="ingredient.name === 'custom'"
+          type="text"
+          [(ngModel)]="ingredient.customName"
+          placeholder="Введите название ингредиента"
+          name="customIngredientName{{i}}"
+          class="form-control"
+          required />
+      </div>
+
+      <div>
+        <input
+          id="quantity-{{i}}"
+          type="number"
+          [(ngModel)]="ingredient.quantity"
+          min="0"
+          step="0.1"
+          class="form-control"
+          name="ingredientQuantity{{i}}"
+          required />
+      </div>
+
+      <div>
+        <select
+          id="unit-{{i}}"
+          [(ngModel)]="ingredient.unit"
+          class="form-control"
+          name="unit{{i}}"
+          required>
+          <option value="">Выберите единицу...</option>
+          <option *ngFor="let unit of unitOptions">{{unit}}</option>
+        </select>
+      </div>
+
+      <div>
+        <button type="button" (click)="removeIngredient(i)">Удалить</button>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" (click)="addIngredient()">Добавить ингредиент</button>
+
+  <button type="submit" [disabled]="!recipeForm.valid">
+    Сохранить
+  </button>
+</form>
+
+<div *ngIf="recipeForm.submitted && !recipeForm.valid">
+  Пожалуйста, заполните все необходимые поля.
+</div>

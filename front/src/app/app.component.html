@@ -1,0 +1,18 @@
+<app-header />
+
+<div *ngIf="loading" class="loading">Подождите, пожалуйста, пока загрузятся рецепты: сервер медленно отвечает, потому что хостинг бесплатный</div>
+<div *ngIf="errorWhileGettingRecipes" class="error">Произошла чудовищная ошибка... (сервер вернул error)</div>
+<app-recipes-list (recipeSelected)="showFullRecipe($event)" [recipes]="recipes"></app-recipes-list>
+<button *ngIf="!loading && !errorWhileGettingRecipes" class="create-recipe" (click)="showCreateRecipe()">Добавить рецепт</button>
+
+<div *ngIf="recipeWindowIsVisible" class="recipe-window">
+  <app-recipe-full [recipeId]="selectedRecipeId" (closeWindow)="closeFullRecipe()" (deleteEntry)="deleteEntry($event)" (editRecipeEvent)="editRecipe($event)"></app-recipe-full>
+</div>
+
+<div *ngIf="createRecipeWindowIsVisible" class="recipe-window">
+  <app-create-recipe
+    [recipeToEdit]="getRecipeById(selectedRecipeId)"
+    (closeWindow)="closeCreateRecipe()"
+    (createUpdateRecipe)="createOrUpdateEntry($event)">
+  </app-create-recipe>
+</div>

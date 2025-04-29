@@ -1,0 +1,29 @@
+<h2>{{recipe?.title}}</h2>
+<div class="sections-container">
+  <section>
+    <img [src]="'../../../assets/default.png'">
+    <!-- <img *ngIf="recipe?.imageURL" [src]="'../../../assets/' + recipe.imageURL" alt="{{ recipe.title }}" -->
+      <!-- class="recipe-image" /> -->
+  </section>
+  <section>
+    <h3>Ингредиенты</h3>
+    <div class="ingredients-grid" *ngIf="recipe?.ingredients">
+      <div *ngFor="let ingredient of recipe.ingredients">
+        <span>{{ ingredient.ingredientName }}:</span> {{ ingredient.quantity }} {{ ingredient.unitName }}
+      </div>
+    </div>
+    <h3>Приготовление</h3>
+    <p>{{ recipe?.instruction }}</p>
+  </section>
+</div>
+<button (click)="deleteRecipe()">Удалить рецепт</button>
+<button class="close-window" (click)="closeTheWindow($event)">X</button>
+<button class="dots-menu" (click)="toggleOptionsMenu($event)">
+  ...
+</button>
+<div class="options-menu" *ngIf="showOptionsMenu">
+  <ul>
+    <li (click)="editRecipe()">Изменить рецепт</li>
+    <li (click)="deleteRecipe()">Удалить рецепт</li>
+  </ul>
+</div>

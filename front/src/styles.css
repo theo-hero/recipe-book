@@ -1,0 +1,63 @@
+@import url("normalise.css");
+
+body {
+  background-color: rgb(254, 249, 244);
+}
+
+button {
+  background-color: rgb(254, 249, 244);
+  color: #000;
+  /* border: 1px solid #000; */
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+}
+
+button:hover {
+  background-color: #ABF0A5;
+}
+
+button:disabled {
+  border: 2px solid #807e7d;
+  color: #807e7d;
+}
+
+input, textarea {
+  background-color: rgb(254, 249, 244);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #a3e29d;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #fafff5;
+}
+
+/* button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 10px;
+  background-color: rgba(116, 233, 112, 0.603);
+  filter: blur(10px);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+button:hover::after {
+  opacity: 1;
+  width: 100%;
+} */

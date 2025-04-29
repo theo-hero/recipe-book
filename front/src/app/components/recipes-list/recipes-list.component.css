@@ -1,0 +1,29 @@
+:host {
+  display: block;
+  padding: 5px 60px;
+}
+
+@media (min-width: 400px) {
+  :host {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 730px) {
+  :host {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  :host {
+      grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  :host {
+      grid-template-columns: repeat(4, 1fr);
+  }
+}

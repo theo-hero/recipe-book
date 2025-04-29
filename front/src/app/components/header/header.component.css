@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 2px solid blue; */
+  width: 100%;
+  font-size: 1.25rem;
+  box-shadow: 0px 0px 0px 1px black inset;
+}
+
+* {
+  flex-grow: 1;
+  text-align: center;
+  padding: 10px 15px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.active {
+  background-color: rgba(116, 233, 112, 0.603);
+  box-shadow: 0px 0px 0px 1px black inset;
+}

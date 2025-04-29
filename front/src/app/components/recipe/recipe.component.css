@@ -1,0 +1,35 @@
+:host {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 7px;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 5px;
+  transition: 0.3s;
+  box-shadow: 0px 0px 0px 1px black inset;
+  cursor: pointer;
+}
+
+:host:hover {
+  display: flex;
+  background-color: rgba(116, 233, 112, 0.603);
+}
+
+h3 {
+  margin: 5px;
+}
+
+/* :host:hover p, :host:hover h3 {
+  color: rgb(241, 255, 241);
+} */
+
+:host:hover img {
+  box-shadow: 0px 0px 0px 2px rgb(241, 255, 241);
+}
+
+img {
+  max-width: 150px;
+  height: auto;
+}
